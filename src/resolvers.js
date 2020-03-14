@@ -1,6 +1,8 @@
+import { tasks } from "./sample";
 
+//controller
 //define
-//res
+//res to client
 //the data that my app can use
 export const resolvers = {
     Query: {
@@ -10,7 +12,11 @@ export const resolvers = {
         greet(root, { name }){
             //console.log(args.name);
             return `hello ${name}!`;
-            
+        },
+        tasks() {
+            return tasks;
         }
     }
 };
+
+//destructuring, bring only some parts of object
