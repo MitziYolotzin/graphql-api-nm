@@ -16,6 +16,14 @@ export const resolvers = {
         tasks() {
             return tasks;
         }
+    },
+    Mutation: {
+        createTask(_, { input }) {
+            //console.log(input)
+            input._id = tasks.length;
+            tasks.push(input);
+            return input;
+        }
     }
 };
 
