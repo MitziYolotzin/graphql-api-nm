@@ -5,6 +5,7 @@
 import express from "express";
 //middleware, enter a route with tool processed by graphql, integrate graphql in express
 import graphqlHTTP from "express-graphql";
+import schema from "./schema";
 
 
 const app = express();
@@ -16,9 +17,9 @@ app.get('/', (req, res) => {
 });
 
 //object, define allow consult
-const schema = {};
+//const schema = {};
 
-//visit route in the browser, process route with module
+//visit route in the browser, process route with module, data response
 app.use('/graphql', graphqlHTTP({
     graphiql: true,
     schema: schema
