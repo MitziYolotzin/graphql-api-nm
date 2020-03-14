@@ -1,5 +1,7 @@
 import { tasks } from "./sample";
 
+import User from "./models/User";
+
 //controller
 //define
 //res to client
@@ -9,12 +11,17 @@ export const resolvers = {
         hello: () => {
             return 'hello graphql'
         },
-        greet(root, { name }){
+        greet(root, { name }, ctx){
             //console.log(args.name);
+            console.log(ctx);
             return `hello ${name}!`;
         },
         tasks() {
             return tasks;
+        },
+        async Users() {
+            //const users = await User.find();
+            return await User.find();
         }
     },
     Mutation: {
@@ -23,6 +30,16 @@ export const resolvers = {
             input._id = tasks.length;
             tasks.push(input);
             return input;
+        },
+        async createUser(_, { input }){
+            const newUser = new User(input)
+            await newUser.save();
+            //console.log(newUser);
+            return newUser;
+            
+        },
+        async deleteUser(_, { id }) {
+            return await User.findByIdAndDelete(_id);
         }
     }
 };
