@@ -38,7 +38,7 @@ export const resolvers = {
             return newUser;
             
         },
-        async deleteUser(_, { id }) {
+        async deleteUser(_, { _id }) {
             return await User.findByIdAndDelete(_id);
         }
     }
