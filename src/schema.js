@@ -4,9 +4,12 @@ import { resolvers } from "./resolvers";
 
 
 //types of data for consult
+//client consult
+//define type
 const typeDefs = `
     type Query {
         hello: String
+        greet: Int
     }
 `;
 
